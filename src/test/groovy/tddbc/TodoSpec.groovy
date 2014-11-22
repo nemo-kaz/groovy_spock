@@ -69,6 +69,17 @@ class TodoSpec extends Specification {
         then:
         todo.all() == "[third, second, first]"
     }
+
+    def "ファイルから読み込める"(){
+        when:
+        todo.load()
+
+        then:
+        todo.all() == "[load, test, case]"
+    }
+
+
 }
+
 
 

@@ -38,4 +38,13 @@ class Todo {
     def swap(int i, int j) {
         Collections.swap(todo,i,j)
     }
+
+    def load() {
+        removeAll()
+         new File('src/test/resources/LoadTestfile.csv').eachLine{
+             add(it)
+         }
+
+    }
+
 }
