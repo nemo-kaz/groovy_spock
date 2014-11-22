@@ -7,7 +7,11 @@ import spock.lang.Specification
  */
 class TodoTest extends Specification {
     def todo = new Todo()
-
+    def setup() {
+        todo.add("first")
+        todo.add("second")
+        todo.add("third")
+    }
     def "TODOを追加できる"() {
         expect:
         todo.add("task") == 1
@@ -27,19 +31,12 @@ class TodoTest extends Specification {
 
 
     def "最初に追加したTODOのみの詳細を見れる"() {
-        when:
-        todo.add("first")
-        todo.add("second")
-        then:
+        expect:
         todo.first()=="first"
     }
 
     def "追加したTODO全てを一覧で見れる"(){
-        when:
-        todo.add("first")
-        todo.add("second")
-        todo.add("third")
-        then:
+        expect:
         todo.all() == "[first, second, third]"
     }
 
