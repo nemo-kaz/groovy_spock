@@ -5,7 +5,7 @@ import spock.lang.Specification
 /**
  * Created by knemoto2 on 2014/11/22.
  */
-class TodoTest extends Specification {
+class TodoSpec extends Specification {
     def todo = new Todo()
     def setup() {
         todo.add("first")
