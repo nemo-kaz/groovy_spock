@@ -28,4 +28,8 @@ class Todo {
     def removeFirst() {
         todo.remove(0)
     }
+
+    def removeLast() {
+        todo.remove(todo.size()-1)
+    }
 }

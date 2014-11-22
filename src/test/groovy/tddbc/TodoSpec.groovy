@@ -47,6 +47,12 @@ class TodoSpec extends Specification {
         todo.first() == "second"
     }
 
+    def "最後に追加したTODOを削除できる"(){
+        when:
+        todo.removeLast()
+        then:
+        todo.last() == "second"
+    }
 }
 
 
