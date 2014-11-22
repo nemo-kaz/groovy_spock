@@ -84,8 +84,8 @@ class TodoSpec extends Specification {
 
     def "ファイルに保存できる(上書き)"(){
         when:
-        todo.save(false,folder.getRoot().toString() + "/SaveTestfile.csv")
-        todo.save(false,folder.getRoot().toString() + "/SaveTestfile.csv")
+        todo.save(true,folder.getRoot().toString() + "/SaveTestfile.csv")
+        todo.save(true,folder.getRoot().toString() + "/SaveTestfile.csv")
         todo.removeAll()
         todo.load(folder.getRoot().toString() + "/SaveTestfile.csv")
         then:
@@ -94,8 +94,8 @@ class TodoSpec extends Specification {
 
     def "ファイルに保存できる(追記)"(){
         when:
-        todo.save(true,folder.getRoot().toString() + "/SaveTestfile.csv")
-        todo.save(true,folder.getRoot().toString() + "/SaveTestfile.csv")
+        todo.save(false,folder.getRoot().toString() + "/SaveTestfile.csv")
+        todo.save(false,folder.getRoot().toString() + "/SaveTestfile.csv")
         todo.removeAll()
         todo.load(folder.getRoot().toString() + "/SaveTestfile.csv")
         then:

@@ -28,7 +28,7 @@ class Todo {
     }
 
     def removeLast() {
-        todo.remove(todo.size()-1)
+        todo.remove(todo.size() - 1)
     }
 
     def removeAll() {
@@ -36,29 +36,25 @@ class Todo {
     }
 
     def swap(int i, int j) {
-        Collections.swap(todo,i,j)
+        Collections.swap(todo, i, j)
     }
 
     def load(String filename) {
         removeAll()
-         new File(filename).eachLine{
-             add(it)
-         }
+        new File(filename).eachLine {
+            add(it)
+        }
 
     }
 
-    def save(Boolean add,String filename) {
-        if(add){
-            new File(filename).withWriterAppend {writer ->
-                todo.each(){
-                    writer<< it+"\n"
-                }
-            }
-        } else {
-            new File(filename).withWriter { writer ->
-                todo.each() {
-                    writer << it + "\n"
-                }
+    def save(Boolean overwrite, String filename) {
+        def file = new File(filename)
+        if (overwrite) {
+            file.delete()
+        }
+        file.withWriterAppend { writer ->
+            todo.each() {
+                writer << it + "\n"
             }
         }
     }
