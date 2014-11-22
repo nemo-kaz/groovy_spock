@@ -15,6 +15,23 @@ class TodoTest extends Specification {
     }
 
 
+    def "最後に追加したTODOのみの詳細を見れる"() {
+        when:
+        Todo todo=new Todo()
+        todo.add("new task")
+        then:
+        todo.last() == "new task"
+    }
+
+
+    def "最後に追加したTODOのみの詳細を見れる2"() {
+        when:
+        Todo todo=new Todo()
+        todo.add("new task 2")
+        then:
+        todo.last() == "new task 2"
+    }
+
 
 
 }

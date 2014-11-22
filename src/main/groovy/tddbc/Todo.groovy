@@ -10,4 +10,9 @@ class Todo {
         todo.add(s)
         return 1
     }
+
+    String last() {
+
+        return todo.last()
+    }
 }
