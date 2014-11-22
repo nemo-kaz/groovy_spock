@@ -27,6 +27,18 @@ class TodoTest extends Specification {
     }
 
 
+    def "最初に追加したTODOのみの詳細を見れる"() {
+        when:
+        todo.add("first")
+        todo.add("second")
+        then:
+        todo.first()=="first"
+
+
+
+    }
+
+
 
 
 }

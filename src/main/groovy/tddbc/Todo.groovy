@@ -15,4 +15,9 @@ class Todo {
 
         return todo.last()
     }
+
+    String first() {
+        return todo.first()
+
+    }
 }
