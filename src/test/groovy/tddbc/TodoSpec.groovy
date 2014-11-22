@@ -77,6 +77,16 @@ class TodoSpec extends Specification {
         todo.all() == "[load, test, case]"
     }
 
+    def "ファイルに保存できる(上書き)"(){
+        when:
+        todo.save("src/test/resources/SaveTestfile.csv")
+        todo.removeAll()
+        todo.load("src/test/resources/SaveTestfile.csv")
+        then:
+        todo.all() == "[first, second, third]"
+
+    }
+
 
 }
 
