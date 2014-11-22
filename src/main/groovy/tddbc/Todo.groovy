@@ -32,4 +32,8 @@ class Todo {
     def removeLast() {
         todo.remove(todo.size()-1)
     }
+
+    def removeAll() {
+        todo.clear()
+    }
 }
