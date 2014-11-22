@@ -11,7 +11,6 @@ class TodoTest extends Specification {
     def "TODOを追加できる"() {
         expect:
         todo.add("task") == 1
-
     }
 
 
@@ -33,12 +32,16 @@ class TodoTest extends Specification {
         todo.add("second")
         then:
         todo.first()=="first"
-
-
-
     }
 
-
+    def "追加したTODO全てを一覧で見れる"(){
+        when:
+        todo.add("first")
+        todo.add("second")
+        todo.add("third")
+        then:
+        todo.all() == "[first, second, third]"
+    }
 
 
 }

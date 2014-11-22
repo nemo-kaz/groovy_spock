@@ -20,4 +20,8 @@ class Todo {
         return todo.first()
 
     }
+
+    String all() {
+        return todo.toString()
+    }
 }

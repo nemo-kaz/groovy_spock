@@ -4,7 +4,7 @@ TDDBC for Groovy with Spock
 #task list
     ==TODOを追加できる
     ==最後に追加したTODOのみの詳細を見れる
-    最初に追加したTODOのみの詳細を見れる
+    ==最初に追加したTODOのみの詳細を見れる
     追加したTODO全てを一覧で見れる
     最初に追加したTODOを削除できる
     最後に追加したTODOを削除できる
