@@ -47,7 +47,7 @@ class Todo {
 
     }
 
-    def save(Boolean overwrite, String filename) {
+    def save(Boolean overwrite = true, String filename) {
         def file = new File(filename)
         if (overwrite) {
             file.delete()

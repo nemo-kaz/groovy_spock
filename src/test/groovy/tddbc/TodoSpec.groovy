@@ -31,77 +31,79 @@ class TodoSpec extends Specification {
         then:
         todo.last() == output
         where:
-        input           | output
-        "new task"      | "new task"
-        "new task 2"    | "new task 2"
+        input        | output
+        "new task"   | "new task"
+        "new task 2" | "new task 2"
     }
 
     def "最初に追加したTODOのみの詳細を見れる"() {
         expect:
-        todo.first()=="first"
+        todo.first() == "first"
     }
 
-    def "追加したTODO全てを一覧で見れる"(){
+    def "追加したTODO全てを一覧で見れる"() {
         expect:
         todo.all() == "[first, second, third]"
     }
 
-    def "最初に追加したTODOを削除できる"(){
+    def "最初に追加したTODOを削除できる"() {
         when:
         todo.removeFirst()
         then:
         todo.first() == "second"
     }
 
-    def "最後に追加したTODOを削除できる"(){
+    def "最後に追加したTODOを削除できる"() {
         when:
         todo.removeLast()
         then:
         todo.last() == "second"
     }
 
-    def "追加した全てのTODOを削除できる"(){
+    def "追加した全てのTODOを削除できる"() {
         when:
         todo.removeAll()
         then:
         todo.all() == "[]"
     }
 
-    def "TODOの順序を入れ替えられる"(){
+    def "TODOの順序を入れ替えられる"() {
         when:
-        todo.swap(0,2)
+        todo.swap(0, 2)
         then:
         todo.all() == "[third, second, first]"
     }
 
-    def "ファイルから読み込める"(){
+    def "ファイルから読み込める"() {
         when:
         todo.load("src/test/resources/LoadTestfile.csv")
         then:
         todo.all() == "[load, test, case]"
     }
 
-
-    def "ファイルに保存できる(上書き)"(){
+    def "ファイルに保存できる(上書き)"() {
         when:
-        todo.save(true,folder.getRoot().toString() + "/SaveTestfile.csv")
-        todo.save(true,folder.getRoot().toString() + "/SaveTestfile.csv")
+        todo.save(getTempFolderPath() + "SaveTestfile.csv")
+        todo.save(true, getTempFolderPath() + "SaveTestfile.csv")
         todo.removeAll()
-        todo.load(folder.getRoot().toString() + "/SaveTestfile.csv")
+        todo.load(getTempFolderPath() + "SaveTestfile.csv")
         then:
         todo.all() == "[first, second, third]"
     }
 
-    def "ファイルに保存できる(追記)"(){
+    def "ファイルに保存できる(追記)"() {
         when:
-        todo.save(false,folder.getRoot().toString() + "/SaveTestfile.csv")
-        todo.save(false,folder.getRoot().toString() + "/SaveTestfile.csv")
+        todo.save(false, getTempFolderPath() + "SaveTestfile.csv")
+        todo.save(false, getTempFolderPath() + "SaveTestfile.csv")
         todo.removeAll()
-        todo.load(folder.getRoot().toString() + "/SaveTestfile.csv")
+        todo.load(getTempFolderPath() + "SaveTestfile.csv")
         then:
         todo.all() == "[first, second, third, first, second, third]"
     }
 
+    private String getTempFolderPath() {
+        folder.getRoot().toString() + "/"
+    }
 
 }
 
