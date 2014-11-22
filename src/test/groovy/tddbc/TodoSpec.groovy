@@ -72,8 +72,7 @@ class TodoSpec extends Specification {
 
     def "ファイルから読み込める"(){
         when:
-        todo.load()
-
+        todo.load("src/test/resources/LoadTestfile.csv")
         then:
         todo.all() == "[load, test, case]"
     }

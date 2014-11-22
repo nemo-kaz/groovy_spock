@@ -39,9 +39,9 @@ class Todo {
         Collections.swap(todo,i,j)
     }
 
-    def load() {
+    def load(String filename) {
         removeAll()
-         new File('src/test/resources/LoadTestfile.csv').eachLine{
+         new File(filename).eachLine{
              add(it)
          }
 
