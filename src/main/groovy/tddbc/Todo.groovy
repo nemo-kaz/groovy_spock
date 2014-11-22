@@ -6,9 +6,8 @@ package tddbc
 class Todo {
     private def todo = []
 
-    int add(String s) {
+    def add(String s) {
         todo.add(s)
-        return 1
     }
 
     String last() {
@@ -18,7 +17,6 @@ class Todo {
 
     String first() {
         return todo.first()
-
     }
 
     String all() {

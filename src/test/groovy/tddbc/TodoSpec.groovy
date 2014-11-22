@@ -15,8 +15,10 @@ class TodoSpec extends Specification {
     }
 
     def "TODOを追加できる"() {
-        expect:
-        todo.add("task") == 1
+        when:
+        todo.add("task")
+        then:
+        todo.todo.toString() == "[first, second, third, task]"
     }
 
     def "最後に追加したTODOのみの詳細を見れる"() {

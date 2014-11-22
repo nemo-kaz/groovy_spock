@@ -9,7 +9,7 @@ TDDBC for Groovy with Spock
     ==最初に追加したTODOを削除できる
     ==最後に追加したTODOを削除できる
     ==追加した全てのTODOを削除できる
-    TODOの順序を入れ替えられる
+    ==TODOの順序を入れ替えられる
 
 
 
