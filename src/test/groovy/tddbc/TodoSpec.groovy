@@ -9,6 +9,8 @@ import spock.lang.Specification
  */
 class TodoSpec extends Specification {
     def todo = new Todo()
+    @Rule
+    TemporaryFolder folder
 
     def setup() {
         todo.add("first")
@@ -79,8 +81,7 @@ class TodoSpec extends Specification {
         todo.all() == "[load, test, case]"
     }
 
-    @Rule
-    TemporaryFolder folder
+
     def "ファイルに保存できる(上書き)"(){
         when:
         todo.save(false,folder.getRoot().toString() + "/SaveTestfile.csv")
@@ -91,7 +92,15 @@ class TodoSpec extends Specification {
         todo.all() == "[first, second, third]"
     }
 
-
+    def "ファイルに保存できる(追記)"(){
+        when:
+        todo.save(true,folder.getRoot().toString() + "/SaveTestfile.csv")
+        todo.save(true,folder.getRoot().toString() + "/SaveTestfile.csv")
+        todo.removeAll()
+        todo.load(folder.getRoot().toString() + "/SaveTestfile.csv")
+        then:
+        todo.all() == "[first, second, third, first, second, third]"
+    }
 
 
 }

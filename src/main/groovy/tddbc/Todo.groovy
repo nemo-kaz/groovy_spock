@@ -48,10 +48,17 @@ class Todo {
     }
 
     def save(Boolean add,String filename) {
-
-        new File (filename).withWriter {writer ->
-            todo.each(){
-                writer<< it+"\n"
+        if(add){
+            new File(filename).withWriterAppend {writer ->
+                todo.each(){
+                    writer<< it+"\n"
+                }
+            }
+        } else {
+            new File(filename).withWriter { writer ->
+                todo.each() {
+                    writer << it + "\n"
+                }
             }
         }
     }
