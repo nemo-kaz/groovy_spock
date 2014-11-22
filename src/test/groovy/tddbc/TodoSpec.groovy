@@ -83,9 +83,9 @@ class TodoSpec extends Specification {
     TemporaryFolder folder
     def "ファイルに保存できる(上書き)"(){
         when:
-        todo.save(folder.toString() + "SaveTestfile.csv")
+        todo.save(folder.getRoot().toString() + "/SaveTestfile.csv")
         todo.removeAll()
-        todo.load(folder.toString() + "SaveTestfile.csv")
+        todo.load(folder.getRoot().toString() + "/SaveTestfile.csv")
         then:
         todo.all() == "[first, second, third]"
     }
