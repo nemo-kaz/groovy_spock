@@ -7,16 +7,17 @@ import spock.lang.Specification
  */
 class TodoSpec extends Specification {
     def todo = new Todo()
+
     def setup() {
         todo.add("first")
         todo.add("second")
         todo.add("third")
     }
+
     def "TODOを追加できる"() {
         expect:
         todo.add("task") == 1
     }
-
 
     def "最後に追加したTODOのみの詳細を見れる"() {
         when:
@@ -29,7 +30,6 @@ class TodoSpec extends Specification {
         "new task 2"    | "new task 2"
     }
 
-
     def "最初に追加したTODOのみの詳細を見れる"() {
         expect:
         todo.first()=="first"
@@ -40,6 +40,12 @@ class TodoSpec extends Specification {
         todo.all() == "[first, second, third]"
     }
 
+    def "最初に追加したTODOを削除できる"(){
+        when:
+        todo.removeFirst()
+        then:
+        todo.first() == "second"
+    }
 
 }
 

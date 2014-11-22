@@ -24,4 +24,8 @@ class Todo {
     String all() {
         return todo.toString()
     }
+
+    def removeFirst() {
+        todo.remove(0)
+    }
 }
