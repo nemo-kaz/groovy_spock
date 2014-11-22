@@ -36,4 +36,8 @@ class Todo {
     def removeAll() {
         todo.clear()
     }
+
+    def swap(int i, int j) {
+        Collections.swap(todo,i,j)
+    }
 }

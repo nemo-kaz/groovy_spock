@@ -60,6 +60,13 @@ class TodoSpec extends Specification {
         then:
         todo.all() == "[]"
     }
+
+    def "TODOの順序を入れ替えられる"(){
+        when:
+        todo.swap(0,2)
+        then:
+        todo.all() == "[third, second, first]"
+    }
 }
 
 
