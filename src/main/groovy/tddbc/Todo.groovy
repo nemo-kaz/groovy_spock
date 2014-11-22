@@ -47,7 +47,8 @@ class Todo {
 
     }
 
-    def save(String filename) {
+    def save(Boolean add,String filename) {
+
         new File (filename).withWriter {writer ->
             todo.each(){
                 writer<< it+"\n"
